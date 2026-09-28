@@ -1,0 +1,6 @@
+.git
+.github
+node_modules
+backend/.env
+*.zip
+.DS_Store

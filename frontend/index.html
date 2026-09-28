@@ -1,0 +1,3690 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>AWB MATHS HUB</title>
+
+<style>
+:root{
+  --bg:#050505;
+  --panel:#101010;
+  --panel2:#151515;
+  --line:#292929;
+  --text:#f6f6f6;
+  --muted:#999;
+  --y:#ffd400;
+  --g:#38d996;
+  --r:#ff5c68;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 85% -10%,#3a3000 0,transparent 32%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,Arial,sans-serif;
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+button:disabled{
+  cursor:not-allowed;
+  opacity:.6;
+}
+
+.hidden{
+  display:none!important;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  padding:14px 4%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#050505dd;
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+
+.brand{
+  font-weight:1000;
+}
+
+.brand span,
+.eyebrow{
+  color:var(--y);
+}
+
+.navtools{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.pill,
+.btn,
+.tab{
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:10px 14px;
+  background:#0e0e0e;
+  color:#fff;
+}
+
+.btn{
+  background:var(--y);
+  color:#050505;
+  border-color:var(--y);
+  font-weight:900;
+}
+
+.btn.dark{
+  background:#151515;
+  color:#fff;
+  border-color:var(--line);
+}
+
+.btn.green{
+  background:var(--g);
+  border-color:var(--g);
+}
+
+.btn.red{
+  background:var(--r);
+  border-color:var(--r);
+}
+
+.tab.active{
+  background:var(--y);
+  color:#050505;
+  border-color:var(--y);
+  font-weight:900;
+}
+
+.wrap{
+  width:min(1250px,92%);
+  margin:30px auto 80px;
+}
+
+.hero{
+  padding:35px 0 20px;
+}
+
+.eyebrow{
+  font-size:12px;
+  letter-spacing:2px;
+  font-weight:900;
+}
+
+.hero h1{
+  font-size:clamp(42px,7vw,82px);
+  line-height:.94;
+  margin:10px 0;
+}
+
+.hero p{
+  max-width:700px;
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.6;
+}
+
+.grid4{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.stat,
+.card{
+  background:linear-gradient(145deg,#121212,#090909);
+  border:1px solid var(--line);
+  border-radius:18px;
+}
+
+.stat{
+  padding:17px;
+}
+
+.stat b{
+  font-size:29px;
+  display:block;
+}
+
+.muted{
+  color:var(--muted);
+}
+
+.tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:22px 0;
+}
+
+.modules{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+}
+
+.module{
+  padding:18px;
+  min-height:140px;
+  text-align:left;
+  transition:.2s;
+}
+
+.module:hover{
+  transform:translateY(-3px);
+}
+
+.module.active{
+  border-color:var(--y);
+  box-shadow:0 0 30px #ffd40014;
+}
+
+.module .num{
+  color:var(--y);
+  font-weight:900;
+}
+
+.module p{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.section{
+  margin-top:25px;
+}
+
+.head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:13px;
+}
+
+.head h2{
+  margin:0;
+}
+
+.select,
+.field,
+.textarea{
+  width:100%;
+  background:#080808;
+  border:1px solid var(--line);
+  color:#fff;
+  border-radius:11px;
+  padding:12px;
+}
+
+.field,
+.textarea{
+  margin:7px 0 11px;
+}
+
+.textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+.topics{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.topic{
+  padding:15px;
+  text-align:left;
+  background:#0e0e0e;
+  border:1px solid var(--line);
+  border-radius:13px;
+  color:#fff;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.topic.done{
+  border-color:#23624d;
+}
+
+.check{
+  color:var(--g);
+}
+
+.topic small{
+  display:block;
+  margin-top:6px;
+}
+
+.two{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:15px;
+}
+
+.formula{
+  font-size:24px;
+  color:var(--y);
+  background:#080808;
+  border:1px solid #2b2b2b;
+  padding:15px;
+  border-radius:12px;
+  margin:12px 0;
+}
+
+.formulaGrid,
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.search{
+  width:100%;
+  background:#090909;
+  color:#fff;
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:13px;
+}
+
+.options{
+  display:grid;
+  gap:9px;
+}
+
+.option{
+  text-align:left;
+  background:#090909;
+  color:#fff;
+  border:1px solid var(--line);
+  padding:13px;
+  border-radius:11px;
+}
+
+.option:hover{
+  border-color:#777;
+}
+
+.feedback{
+  padding:13px;
+  border-radius:11px;
+  margin-top:10px;
+}
+
+.correct{
+  border:1px solid #23624d;
+  color:var(--g);
+}
+
+.wrong{
+  border:1px solid #702933;
+  color:#ff8d96;
+}
+
+.mistake{
+  background:#130d0e;
+  border:1px solid #45252a;
+  border-radius:13px;
+  padding:15px;
+  margin-bottom:10px;
+}
+
+.score{
+  font-size:65px;
+  font-weight:1000;
+  color:var(--y);
+}
+
+.bar{
+  height:8px;
+  background:#252525;
+  border-radius:99px;
+  overflow:hidden;
+}
+
+.bar i{
+  display:block;
+  height:100%;
+  background:var(--y);
+}
+
+.auth{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:25px;
+}
+
+.authbox{
+  width:min(520px,100%);
+  padding:28px;
+}
+
+.authmsg{
+  padding:11px;
+  background:#151515;
+  border:1px solid var(--line);
+  border-radius:10px;
+  margin-top:10px;
+}
+
+.footer{
+  margin-top:60px;
+  padding:25px 0;
+  border-top:1px solid var(--line);
+  font-size:12px;
+  color:#666;
+}
+
+.adminGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.adminStat{
+  padding:18px;
+}
+
+.adminStat b{
+  font-size:28px;
+}
+
+hr{
+  border-color:var(--line);
+}
+
+@media(max-width:850px){
+  .grid4,
+  .adminGrid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .modules{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .two{
+    grid-template-columns:1fr;
+  }
+
+  .formulaGrid,
+  .cards{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:550px){
+  .grid4,
+  .adminGrid,
+  .modules,
+  .topics{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:45px;
+  }
+
+  .navtools .pill{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= AUTH ================= -->
+
+<div id="auth" class="auth">
+
+  <div class="card authbox">
+
+    <div class="eyebrow">
+      POWERED BY AWB VERSE
+    </div>
+
+    <h1>
+      AWB <span style="color:var(--y)">MATHS HUB</span>
+    </h1>
+
+    <p class="muted">
+      Learn the Concept. Solve the Problem. Master Mathematics.
+    </p>
+
+    <div class="tabs">
+
+      <button
+        id="loginTab"
+        class="tab active"
+        type="button"
+        onclick="authMode('login')">
+        LOGIN
+      </button>
+
+      <button
+        id="signupTab"
+        class="tab"
+        type="button"
+        onclick="authMode('signup')">
+        SIGN UP
+      </button>
+
+    </div>
+
+    <input
+      id="name"
+      class="field hidden"
+      placeholder="Full name"
+      autocomplete="name">
+
+    <input
+      id="sbuId"
+      class="field hidden"
+      placeholder="SBU ID  •  Example: SBU2601477"
+      autocomplete="off"
+      maxlength="10"
+      style="text-transform:uppercase">
+
+    <input
+      id="email"
+      class="field"
+      type="text"
+      placeholder="SBU ID or Email"
+      autocomplete="username"
+      maxlength="255">
+
+    <input
+      id="pass"
+      class="field"
+      type="password"
+      placeholder="Password"
+      autocomplete="current-password">
+
+    <button
+      id="authBtn"
+      class="btn"
+      type="button"
+      style="width:100%"
+      onclick="submitAuth()">
+      LOGIN
+    </button>
+<div
+      id="authMsg"
+      class="authmsg hidden">
+    </div>
+
+    <p
+      class="muted"
+      style="font-size:12px;margin-top:20px">
+      Independent student project.
+      Not officially affiliated with Sarala Birla University.
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- ================= APP ================= -->
+
+<div id="app" class="hidden">
+
+  <nav>
+
+    <div class="brand">
+      AWB <span>MATHS HUB</span>
+    </div>
+
+    <div class="navtools">
+
+      <span
+        id="userPill"
+        class="pill">
+      </span>
+
+      <button
+        class="btn dark"
+        type="button"
+        onclick="logout()">
+        LOGOUT
+      </button>
+
+    </div>
+
+  </nav>
+
+
+  <div class="wrap">
+
+    <section class="hero">
+
+      <div class="eyebrow">
+        MATHEMATICS-I • BCA-106
+      </div>
+
+      <h1>
+        Master Maths.<br>
+        <span style="color:var(--y)">
+          One Problem at a Time.
+        </span>
+      </h1>
+
+      <p>
+        AYAN teaches in Hinglish:
+        Concept → Formula → Example → Practice → Quiz → Exam → Mistake Review.
+      </p>
+
+    </section>
+
+
+    <!-- STATS -->
+
+    <div class="grid4">
+
+      <div class="stat">
+        XP
+        <b id="xp">0</b>
+      </div>
+
+      <div class="stat">
+        STREAK
+        <b id="streak">0</b>
+      </div>
+
+      <div class="stat">
+        TOPICS DONE
+        <b id="done">0</b>
+      </div>
+
+      <div class="stat">
+        BEST QUIZ
+        <b id="best">—</b>
+      </div>
+
+    </div>
+
+
+    <!-- MAIN TABS -->
+
+    <div class="tabs" id="tabs">
+
+      <button
+        class="tab active"
+        data-m="learn"
+        type="button"
+        onclick="mode('learn')">
+        LEARN
+      </button>
+
+      <button
+        class="tab"
+        data-m="formula"
+        type="button"
+        onclick="mode('formula')">
+        FORMULA VAULT
+      </button>
+
+      <button
+        class="tab"
+        data-m="practice"
+        type="button"
+        onclick="mode('practice')">
+        PRACTICE
+      </button>
+
+      <button
+        class="tab"
+        data-m="quiz"
+        type="button"
+        onclick="mode('quiz')">
+        QUIZ
+      </button>
+
+      <button
+        class="tab"
+        data-m="exam"
+        type="button"
+        onclick="mode('exam')">
+        EXAM MODE
+      </button>
+
+      <button
+        class="tab"
+        data-m="mistakes"
+        type="button"
+        onclick="mode('mistakes')">
+        MISTAKE BOOK
+      </button>
+
+      <button
+        class="tab"
+        data-m="ai"
+        type="button"
+        onclick="mode('ai')">
+        ASK AYAN AI
+      </button>
+
+      <button
+        id="adminTab"
+        class="tab hidden"
+        data-m="admin"
+        type="button"
+        onclick="mode('admin')">
+        AYAN ADMIN
+      </button>
+
+    </div>
+
+
+    <!-- MODULES -->
+
+    <section>
+
+      <div class="head">
+
+        <h2>
+          Course Modules
+        </h2>
+
+        <span class="muted">
+          5 Modules
+        </span>
+
+      </div>
+
+      <div
+        id="modules"
+        class="modules">
+      </div>
+
+    </section>
+
+
+    <!-- MAIN CONTENT -->
+
+    <section
+      id="main"
+      class="section">
+    </section>
+
+
+    <div class="footer">
+      AWB MATHS HUB • Powered by AWB VERSE • Independent student project
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- API FILE -->
+
+<script src="/api.js"></script>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+/* =========================================================
+   SAFE DOM HELPERS
+========================================================= */
+
+const $ = (id) => document.getElementById(id);
+
+const auth = $("auth");
+const app = $("app");
+
+const loginTab = $("loginTab");
+const signupTab = $("signupTab");
+
+const nameInput = $("name");
+const sbuIdInput = $("sbuId");
+const emailInput = $("email");
+const passInput = $("pass");
+
+const authBtn = $("authBtn");
+const authMsg = $("authMsg");
+
+const userPill = $("userPill");
+const adminTab = $("adminTab");
+
+const modulesEl = $("modules");
+const main = $("main");
+
+const xpEl = $("xp");
+const streakEl = $("streak");
+const doneEl = $("done");
+const bestEl = $("best");
+
+
+/* =========================================================
+   COURSE MODULES
+========================================================= */
+
+const modules = [
+
+  {
+    id:"M1",
+    name:"Module I",
+    title:"Basic Differentiation",
+
+    topics:[
+
+      [
+        "Differentiating a Function — Slopes & Derivatives",
+        "Derivative describes the rate of change of a function and connects with slope.",
+        "dy/dx",
+        "AYAN: Derivative ko rate of change samjho."
+      ],
+
+      [
+        "Algebraic Functions",
+        "Differentiate algebraic functions using standard derivative rules.",
+        "d(x^n)/dx = nx^(n−1)",
+        "AYAN: Power rule — power multiply hoti hai, phir 1 se reduce."
+      ],
+
+      [
+        "Exponential Functions",
+        "Derivatives of exponential functions.",
+        "d(e^x)/dx = e^x",
+        "AYAN: e^x ka derivative e^x hi."
+      ],
+
+      [
+        "Logarithmic Functions",
+        "Derivatives of logarithmic functions.",
+        "d(log x)/dx = 1/x (natural-log convention)",
+        "AYAN: Notation aur question context ko carefully read karo."
+      ],
+
+      [
+        "Trigonometric Functions",
+        "Derivatives of basic trigonometric functions.",
+        "d(sin x)/dx = cos x",
+        "AYAN: Basic trig pairs practice se automatic banao."
+      ],
+
+      [
+        "Product Rule",
+        "Derivative of a product of two functions.",
+        "(uv)' = u'v + uv'",
+        "AYAN: First derivative × second + first × second derivative."
+      ],
+
+      [
+        "Quotient Rule",
+        "Derivative of a quotient.",
+        "(u/v)' = (vu' − uv')/v²",
+        "AYAN: Bottom × derivative top − top × derivative bottom, over bottom square."
+      ],
+
+      [
+        "Chain Rule",
+        "Derivative of a composite function.",
+        "dy/dx = (dy/du)(du/dx)",
+        "AYAN: Bahar ka derivative × andar ka derivative."
+      ]
+
+    ]
+  },
+
+
+  {
+    id:"M2",
+    name:"Module II",
+    title:"Partial Differentiation",
+
+    topics:[
+
+      [
+        "Partial Derivative",
+        "Differentiate with respect to one variable while treating other variables as constant.",
+        "∂f/∂x",
+        "AYAN: x ke respect me y ko constant treat karo."
+      ],
+
+      [
+        "Higher Order Partial Derivative",
+        "Second and higher partial derivatives.",
+        "∂²f/∂x²",
+        "AYAN: Partial derivative ko repeat karo."
+      ],
+
+      [
+        "Total Differentiation",
+        "Total change when multiple variables vary.",
+        "dz = (∂z/∂x)dx + (∂z/∂y)dy",
+        "AYAN: Multiple variable changes combine hote hain."
+      ],
+
+      [
+        "Jacobians",
+        "Jacobian determinant for transformation between variables.",
+        "J = ∂(u,v)/∂(x,y)",
+        "AYAN: Transformation ka determinant."
+      ],
+
+      [
+        "Properties of Jacobians",
+        "Use properties of Jacobians in calculations.",
+        "J(u,v/x,y)",
+        "AYAN: Property ko operation ke form me practice karo."
+      ],
+
+      [
+        "Jacobians of Implicit Functions",
+        "Jacobians for implicitly related variables.",
+        "Implicit Jacobian setup",
+        "AYAN: Relations identify karke Jacobian setup karo."
+      ]
+
+    ]
+  },
+
+
+  {
+    id:"M3",
+    name:"Module III",
+    title:"Integration Techniques",
+
+    topics:[
+
+      [
+        "Basic Integration",
+        "Integration as antiderivative.",
+        "∫f(x)dx = F(x)+C",
+        "AYAN: Differentiation ka reverse process."
+      ],
+
+      [
+        "Integration by Substitution",
+        "Use substitution to simplify an integral.",
+        "∫f(g(x))g'(x)dx",
+        "AYAN: Inner function + derivative dikhe to substitution check karo."
+      ],
+
+      [
+        "Integration by Parts",
+        "Integrate products using parts.",
+        "∫u dv = uv − ∫v du",
+        "AYAN: Product me u aur dv choose karna key hai."
+      ],
+
+      [
+        "Definite Integral",
+        "Evaluate integral between limits.",
+        "∫ₐᵇ f(x)dx",
+        "AYAN: Definite integral me limits hoti hain."
+      ],
+
+      [
+        "Double Integration",
+        "Integrate with respect to two variables.",
+        "∫∫f(x,y)dxdy",
+        "AYAN: Ek variable then next variable."
+      ],
+
+      [
+        "Area Under Curve",
+        "Area using definite integration.",
+        "Area = ∫ₐᵇ f(x)dx",
+        "AYAN: Limits aur region identify karo."
+      ],
+
+      [
+        "Applications of Definite Integral",
+        "Applications in science and engineering.",
+        "∫ₐᵇf(x)dx",
+        "AYAN: Quantity, units aur limits identify karo."
+      ]
+
+    ]
+  },
+
+
+  {
+    id:"M4",
+    name:"Module IV",
+    title:"Differential Equations",
+
+    topics:[
+
+      [
+        "Definition of Differential Equation",
+        "Equation involving derivatives.",
+        "Differential equation",
+        "AYAN: Derivative involved equation ko identify karo."
+      ],
+
+      [
+        "Order and Degree",
+        "Identify order and degree.",
+        "Order = highest derivative order",
+        "AYAN: Highest derivative pehle identify karo."
+      ],
+
+      [
+        "Solution of Differential Equation",
+        "Understand a solution of a DE.",
+        "Solution satisfies the DE",
+        "AYAN: Original DE me substitute karke verify kar sakte ho."
+      ],
+
+      [
+        "Separation of Variables",
+        "Separate variables before integrating.",
+        "dy/dx = f(x)g(y)",
+        "AYAN: x ek side, y doosri side, then integrate."
+      ],
+
+      [
+        "Linear Differential Equation",
+        "First-order linear differential equation.",
+        "dy/dx + Py = Q",
+        "AYAN: Standard form identify karna first step hai."
+      ],
+
+      [
+        "Higher Order Linear DE",
+        "Higher-order linear DE with constant coefficients.",
+        "Linear DE with constant coefficients",
+        "AYAN: Required problems me characteristic equation approach."
+      ]
+
+    ]
+  },
+
+
+  {
+    id:"M5",
+    name:"Module V",
+    title:"Matrix Theory",
+
+    topics:[
+
+      [
+        "Matrix Algebra",
+        "Basic matrix operations.",
+        "A+B, AB",
+        "AYAN: Addition same order; multiplication inner dimensions match."
+      ],
+
+      [
+        "Elementary Transformation",
+        "Elementary row/column operations.",
+        "Row operations",
+        "AYAN: Operations systematically track karo."
+      ],
+
+      [
+        "Elementary Matrices",
+        "Matrices representing elementary operations.",
+        "Elementary matrix",
+        "AYAN: Elementary operation ka matrix representation."
+      ],
+
+      [
+        "Inverse by Row Operation",
+        "Inverse through row reduction.",
+        "[A | I] → [I | A⁻¹]",
+        "AYAN: Augmented matrix ko identity tak reduce karo."
+      ],
+
+      [
+        "Rank by Echelon Form",
+        "Rank from echelon form.",
+        "rank(A) = number of non-zero rows",
+        "AYAN: Non-zero rows count karo."
+      ],
+
+      [
+        "System of Linear Equations",
+        "Simultaneous equations by matrix method.",
+        "AX = B",
+        "AYAN: Equations ko matrix form me convert karo."
+      ],
+
+      [
+        "Eigenvalues & Eigenvectors",
+        "Eigenvalue/eigenvector calculation.",
+        "|A−λI| = 0",
+        "AYAN: Characteristic equation se eigenvalues."
+      ],
+
+      [
+        "Cayley-Hamilton Theorem",
+        "Theorem studied without proof.",
+        "p(A)=0",
+        "AYAN: Characteristic polynomial ko A me substitute karne ka idea."
+      ],
+
+      [
+        "Inverse using Cayley-Hamilton",
+        "Inverse of nonsingular matrix using theorem.",
+        "Cayley-Hamilton based inverse",
+        "AYAN: Polynomial relation rearrange karke inverse obtain."
+      ]
+
+    ]
+  }
+
+];
+
+
+/* =========================================================
+   QUESTIONS
+========================================================= */
+
+const qs = [
+
+  [
+    "M1",
+    "If y=x³, dy/dx is?",
+    ["x²","3x²","3x","x⁴"],
+    "3x²"
+  ],
+
+  [
+    "M1",
+    "Product rule is?",
+    ["u'v + uv'","u'v'","uv","u/v"],
+    "u'v + uv'"
+  ],
+
+  [
+    "M1",
+    "Derivative of eˣ?",
+    ["xeˣ","eˣ","1/x","0"],
+    "eˣ"
+  ],
+
+  [
+    "M2",
+    "In ∂f/∂x, y is treated as?",
+    ["zero","constant","undefined","the derivative"],
+    "constant"
+  ],
+
+  [
+    "M3",
+    "Integration by parts?",
+    [
+      "∫u dv = uv + ∫v du",
+      "∫u dv = uv − ∫v du",
+      "∫u dv=u/v",
+      "∫u dv=du/dv"
+    ],
+    "∫u dv = uv − ∫v du"
+  ],
+
+  [
+    "M4",
+    "Order is determined by?",
+    [
+      "coefficient",
+      "highest derivative order",
+      "constant",
+      "lowest power"
+    ],
+    "highest derivative order"
+  ],
+
+  [
+    "M5",
+    "Eigenvalues satisfy?",
+    [
+      "A=I",
+      "|A−λI|=0",
+      "λ=0",
+      "A+λI=0"
+    ],
+    "|A−λI|=0"
+  ],
+
+  [
+    "M5",
+    "Rank in echelon form is number of?",
+    [
+      "columns",
+      "non-zero rows",
+      "zeros",
+      "diagonals"
+    ],
+    "non-zero rows"
+  ]
+
+];
+
+
+/* =========================================================
+   APP STATE
+========================================================= */
+
+let S = {
+  user:null,
+
+  data:{
+    topics:[],
+    mistakes:[],
+    attempts:[]
+  },
+
+  module:"M1",
+
+  topic:0,
+
+  mode:"learn",
+
+  quiz:null,
+
+  examTimer:null,
+
+  practice:null
+};
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function esc(s){
+
+  return String(s ?? "")
+    .replace(/[&<>"']/g,c=>({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[c]));
+
+}
+
+
+function m(){
+
+  return modules.find(x=>x.id===S.module) || modules[0];
+
+}
+
+
+function done(i){
+
+  return S.data.topics.some(
+    x =>
+      x.module_id===S.module &&
+      Number(x.topic_index)===Number(i)
+  );
+
+}
+
+
+/* =========================================================
+   AUTH MODE
+========================================================= */
+
+function authMode(x){
+
+  loginTab.classList.toggle(
+    "active",
+    x==="login"
+  );
+
+  signupTab.classList.toggle(
+    "active",
+    x==="signup"
+  );
+
+  nameInput.classList.toggle(
+    "hidden",
+    x!=="signup"
+  );
+
+  sbuIdInput.classList.toggle(
+    "hidden",
+    x!=="signup"
+  );
+
+  authBtn.textContent =
+    x==="signup"
+      ? "CREATE ACCOUNT"
+      : "LOGIN";
+
+  authBtn.dataset.mode=x;
+
+  authMsg.classList.add("hidden");
+
+  if(x==="login"){
+
+    emailInput.type="text";
+    emailInput.placeholder="SBU ID or Email";
+    emailInput.autocomplete="username";
+    passInput.autocomplete="current-password";
+
+  }else{
+
+    emailInput.type="email";
+    emailInput.placeholder="Email";
+    emailInput.autocomplete="email";
+    passInput.autocomplete="new-password";
+
+  }
+
+}
+
+
+/* =========================================================
+   AUTH SUBMIT
+========================================================= */
+
+async function submitAuth(){
+
+  try{
+
+    authMsg.classList.add("hidden");
+
+    const modeValue = authBtn.dataset.mode || "login";
+    const identifier = emailInput.value.trim();
+    const password = passInput.value;
+
+    if(!identifier){
+      throw new Error(
+        modeValue==="signup"
+          ? "Email enter karo."
+          : "SBU ID ya Email enter karo."
+      );
+    }
+
+    if(!password) throw new Error("Password enter karo.");
+
+    authBtn.disabled=true;
+    authBtn.textContent = modeValue==="signup" ? "CREATING..." : "LOGGING IN...";
+
+    if(modeValue==="signup"){
+      const name = nameInput.value.trim();
+      const sbuId = sbuIdInput.value.trim().toUpperCase();
+
+      if(!name) throw new Error("Full name enter karo.");
+      if(!sbuId) throw new Error("SBU ID enter karo.");
+      if(!/^SBU\d{7}$/.test(sbuId)){
+        throw new Error("SBU ID format galat hai. Example: SBU2601477");
+      }
+
+      await API.signup(name,sbuId,identifier,password);
+    }else{
+      await API.login(identifier,password);
+    }
+
+    await start();
+
+  }catch(e){
+    authMsg.textContent = e?.message || "Something went wrong.";
+    authMsg.classList.remove("hidden");
+  }finally{
+    authBtn.disabled=false;
+    const modeValue = authBtn.dataset.mode || "login";
+    authBtn.textContent = modeValue==="signup" ? "CREATE ACCOUNT" : "LOGIN";
+  }
+}
+
+/* =========================================================
+   START USER SESSION
+========================================================= */
+
+async function start(){
+
+  try{
+
+    let d =
+      await API.dashboard();
+
+    S.user=d.user;
+
+    S.data=d;
+
+
+    try{
+
+      await API.streak();
+
+      d=await API.dashboard();
+
+      S.data=d;
+
+      S.user=d.user;
+
+    }catch(streakError){
+
+      console.warn(
+        "Streak update failed:",
+        streakError
+      );
+
+    }
+
+
+    enter();
+
+  }catch(e){
+
+    authMsg.textContent =
+      e?.message ||
+      "Unable to load account.";
+
+    authMsg.classList.remove("hidden");
+
+  }
+
+}
+
+
+/* =========================================================
+   ENTER APP
+========================================================= */
+
+function enter(){
+
+  auth.classList.add("hidden");
+
+  app.classList.remove("hidden");
+
+  userPill.textContent =
+    S.user.name +
+    (S.user.sbu_id ? " • " + S.user.sbu_id : "");
+
+  adminTab.classList.toggle(
+    "hidden",
+    S.user.role!=="admin"
+  );
+
+  render();
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+async function logout(){
+
+  try{
+
+    await API.logout();
+
+  }catch(e){
+
+    console.warn(
+      "Logout error:",
+      e
+    );
+
+  }finally{
+
+    location.reload();
+
+  }
+
+}
+
+
+/* =========================================================
+   RENDER
+========================================================= */
+
+function render(){
+
+  stats();
+
+  renderModules();
+
+  renderMode();
+
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+function stats(){
+
+  xpEl.textContent =
+    S.user?.xp || 0;
+
+  streakEl.textContent =
+    S.user?.streak || 0;
+
+  doneEl.textContent =
+    S.data?.topics?.length || 0;
+
+
+  const attempts =
+    S.data?.attempts || [];
+
+
+  if(attempts.length){
+
+    const bestScore =
+      Math.max(
+        ...attempts.map(x=>{
+
+          const total =
+            Number(x.total) || 1;
+
+          return Number(x.score) / total;
+
+        })
+      );
+
+    bestEl.textContent =
+      Math.round(bestScore*100)+"%";
+
+  }else{
+
+    bestEl.textContent="—";
+
+  }
+
+}
+
+
+/* =========================================================
+   MODULES
+========================================================= */
+
+function renderModules(){
+
+  modulesEl.innerHTML =
+    modules.map(x=>{
+
+      const completed =
+        x.topics.filter(
+          (_,i)=>
+            S.data.topics.some(
+              t =>
+                t.module_id===x.id &&
+                Number(t.topic_index)===i
+            )
+        ).length;
+
+
+      return `
+
+        <button
+          class="card module ${
+            S.module===x.id
+              ? "active"
+              : ""
+          }"
+          type="button"
+          onclick="selectModule('${x.id}')">
+
+          <div class="num">
+            ${esc(x.name)}
+          </div>
+
+          <h3>
+            ${esc(x.title)}
+          </h3>
+
+          <p>
+            ${x.topics.length}
+            topics •
+            ${completed}
+            complete
+          </p>
+
+        </button>
+
+      `;
+
+    }).join("");
+
+}
+
+
+/* =========================================================
+   SELECT MODULE
+========================================================= */
+
+function selectModule(id){
+
+  if(!modules.some(x=>x.id===id)){
+
+    return;
+
+  }
+
+  S.module=id;
+
+  S.topic=0;
+
+  S.mode="learn";
+
+  S.quiz=null;
+
+  S.practice=null;
+
+  clearInterval(S.examTimer);
+
+  render();
+
+}
+
+
+/* =========================================================
+   MODE
+========================================================= */
+
+function mode(x){
+
+  S.mode=x;
+
+  S.quiz=null;
+
+  clearInterval(S.examTimer);
+
+  document
+    .querySelectorAll("#tabs .tab")
+    .forEach(b=>{
+
+      b.classList.toggle(
+        "active",
+        b.dataset.m===x
+      );
+
+    });
+
+  renderMode();
+
+}
+
+
+/* =========================================================
+   MODE RENDER
+========================================================= */
+
+function renderMode(){
+
+  if(S.mode==="learn"){
+
+    learn();
+
+  }else if(S.mode==="formula"){
+
+    formulas();
+
+  }else if(S.mode==="practice"){
+
+    practice();
+
+  }else if(S.mode==="quiz"){
+
+    quiz(false);
+
+  }else if(S.mode==="exam"){
+
+    quiz(true);
+
+  }else if(S.mode==="mistakes"){
+
+    mistakes();
+
+  }else if(S.mode==="ai"){
+
+    aiTeacher();
+
+  }else if(S.mode==="admin"){
+
+    adminView();
+
+  }
+
+}
+
+
+/* =========================================================
+   LEARN
+========================================================= */
+
+function learn(){
+
+  const M=m();
+
+  const t =
+    M.topics[S.topic] ||
+    M.topics[0];
+
+
+  main.innerHTML=`
+
+    <div class="head">
+
+      <h2>
+        ${esc(M.name)}
+        •
+        ${esc(M.title)}
+      </h2>
+
+      <select
+        id="topicSelect"
+        class="select"
+        style="max-width:500px">
+
+        ${M.topics.map((x,i)=>`
+
+          <option
+            value="${i}"
+            ${i===S.topic?"selected":""}>
+
+            ${i+1}.
+            ${esc(x[0])}
+
+          </option>
+
+        `).join("")}
+
+      </select>
+
+    </div>
+
+
+    <div class="two">
+
+      <div
+        class="card"
+        style="padding:22px">
+
+        <div class="eyebrow">
+          TOPIC ${S.topic+1}/${M.topics.length}
+        </div>
+
+        <h2>
+          ${esc(t[0])}
+        </h2>
+
+        <p class="muted">
+          ${esc(t[1])}
+        </p>
+
+        <div class="formula">
+          ${esc(t[2])}
+        </div>
+
+        <h3>
+          AYAN
+        </h3>
+
+        <p style="line-height:1.7">
+          ${esc(t[3])}
+        </p>
+
+        <button
+          id="completeBtn"
+          class="btn ${
+            done(S.topic)
+              ? "dark"
+              : ""
+          }"
+          type="button">
+
+          ${
+            done(S.topic)
+              ? "✓ COMPLETED"
+              : "+20 XP • MARK COMPLETE"
+          }
+
+        </button>
+
+      </div>
+
+
+      <div
+        class="card"
+        style="padding:22px">
+
+        <h3>
+          Module Progress
+        </h3>
+
+        <div class="bar">
+
+          <i
+            style="width:${
+              (
+                M.topics.filter(
+                  (_,i)=>
+                    S.data.topics.some(
+                      t =>
+                        t.module_id===M.id &&
+                        Number(t.topic_index)===i
+                    )
+                ).length /
+                M.topics.length
+              )*100
+            }%">
+          </i>
+
+        </div>
+
+        <p class="muted">
+
+          ${
+            M.topics.filter(
+              (_,i)=>
+                S.data.topics.some(
+                  t =>
+                    t.module_id===M.id &&
+                    Number(t.topic_index)===i
+                )
+            ).length
+          }
+
+          /
+
+          ${M.topics.length}
+
+        </p>
+
+        <h3>
+          Learning Loop
+        </h3>
+
+        <p class="muted">
+          Concept →
+          Formula →
+          Example →
+          Practice →
+          Quiz →
+          Mistake Book
+        </p>
+
+        <button
+          id="continueBtn"
+          class="btn dark"
+          type="button">
+
+          CONTINUE →
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="section">
+
+      <h2>
+        Topics
+      </h2>
+
+      <div class="topics">
+
+        ${M.topics.map((x,i)=>`
+
+          <button
+            class="topic ${
+              done(i) ? "done" : ""
+            }"
+            type="button"
+            data-topic-index="${i}">
+
+            <span>
+
+              <b>
+                ${i+1}.
+                ${esc(x[0])}
+              </b>
+
+              <small class="muted">
+                ${esc(x[1])}
+              </small>
+
+            </span>
+
+            <span class="check">
+              ${done(i)?"✓":""}
+            </span>
+
+          </button>
+
+        `).join("")}
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  const topicSelect =
+    $("topicSelect");
+
+  if(topicSelect){
+
+    topicSelect.addEventListener(
+      "change",
+      function(){
+
+        S.topic=
+          Number(this.value) || 0;
+
+        learn();
+
+      }
+    );
+
+  }
+
+
+  const completeBtn =
+    $("completeBtn");
+
+  if(completeBtn){
+
+    completeBtn.addEventListener(
+      "click",
+      completeTopic
+    );
+
+  }
+
+
+  const continueBtn =
+    $("continueBtn");
+
+  if(continueBtn){
+
+    continueBtn.addEventListener(
+      "click",
+      function(){
+
+        S.topic =
+          (S.topic+1) %
+          M.topics.length;
+
+        learn();
+
+      }
+    );
+
+  }
+
+
+  document
+    .querySelectorAll("[data-topic-index]")
+    .forEach(btn=>{
+
+      btn.addEventListener(
+        "click",
+        function(){
+
+          S.topic =
+            Number(
+              this.dataset.topicIndex
+            ) || 0;
+
+          learn();
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =========================================================
+   COMPLETE TOPIC
+========================================================= */
+
+async function completeTopic(){
+
+  if(done(S.topic)){
+
+    return;
+
+  }
+try{
+
+    const r =
+      await API.topic(
+        S.module,
+        S.topic
+      );
+
+    S.user=r.user;
+
+    S.data=
+      await API.dashboard();
+
+    render();
+
+  }catch(e){
+
+    alert(
+      e?.message ||
+      "Unable to save progress."
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   FORMULAS
+========================================================= */
+
+function formulas(){
+
+  const all =
+    modules.flatMap(
+      M =>
+        M.topics.map(
+          t=>({
+
+            M:M.name,
+
+            topic:t[0],
+
+            formula:t[2]
+
+          })
+        )
+    );
+
+
+  main.innerHTML=`
+
+    <h2>
+      Formula Vault
+    </h2>
+
+    <input
+      id="fsearch"
+      class="search"
+      placeholder="Search formula / topic...">
+
+    <div
+      class="formulaGrid section">
+
+      ${all.map(x=>`
+
+        <div
+          class="card formula-card"
+          style="padding:18px"
+          data-f="${esc(
+            (
+              x.M+
+              x.topic+
+              x.formula
+            ).toLowerCase()
+          )}">
+
+          <div class="eyebrow">
+            ${esc(x.M)}
+          </div>
+
+          <h3>
+            ${esc(x.topic)}
+          </h3>
+
+          <div class="formula">
+            ${esc(x.formula)}
+          </div>
+
+        </div>
+
+      `).join("")}
+
+    </div>
+
+  `;
+
+
+  const search =
+    $("fsearch");
+
+  if(search){
+
+    search.addEventListener(
+      "input",
+      filterF
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   FORMULA FILTER
+========================================================= */
+
+function filterF(){
+
+  const search =
+    $("fsearch");
+
+  if(!search){
+
+    return;
+
+  }
+
+  const q =
+    search.value
+      .toLowerCase()
+      .trim();
+
+
+  document
+    .querySelectorAll("[data-f]")
+    .forEach(x=>{
+
+      x.style.display =
+        x.dataset.f.includes(q)
+          ? "block"
+          : "none";
+
+    });
+
+}
+
+
+/* =========================================================
+   SAVE MISTAKE
+========================================================= */
+
+async function saveMistake(
+  q,
+  ans,
+  modeName
+){
+
+  const p={
+
+    source:modeName,
+
+    moduleId:q[0],
+
+    question:q[1],
+
+    selectedAnswer:ans,
+
+    correctAnswer:q[3],
+
+    explanation:
+      "Review the related concept and formula."
+
+  };
+await API.mistake(p);
+
+  S.data=
+    await API.dashboard();
+
+}
+
+
+/* =========================================================
+   PRACTICE
+========================================================= */
+
+function practice(){
+
+  if(
+    !S.practice ||
+    S.practice[0]!==S.module
+  ){
+
+    S.practice =
+      qs.find(
+        q=>q[0]===S.module
+      ) ||
+      qs[0];
+
+  }
+
+
+  const q=S.practice;
+
+
+  main.innerHTML=`
+
+    <div
+      class="card"
+      style="padding:22px">
+
+      <div class="eyebrow">
+        SYLLABUS-STRUCTURED PRACTICE
+      </div>
+
+      <h2>
+        ${esc(q[1])}
+      </h2>
+
+      <div
+        id="practiceOptions"
+        class="options">
+
+        ${q[2].map((o,i)=>`
+
+          <button
+            class="option"
+            type="button"
+            data-practice-index="${i}">
+
+            ${esc(o)}
+
+          </button>
+
+        `).join("")}
+
+      </div>
+
+      <div id="pf"></div>
+
+      <button
+        id="nextPractice"
+        class="btn dark"
+        type="button"
+        style="margin-top:15px">
+
+        NEXT QUESTION
+
+      </button>
+
+    </div>
+
+  `;
+
+
+  document
+    .querySelectorAll(
+      "[data-practice-index]"
+    )
+    .forEach(btn=>{
+
+      btn.addEventListener(
+        "click",
+        function(){
+
+          const index =
+            Number(
+              this.dataset.practiceIndex
+            );
+
+          answerPractice(
+            q[2][index]
+          );
+
+        }
+      );
+
+    });
+
+
+  const nextPractice =
+    $("nextPractice");
+
+  if(nextPractice){
+
+    nextPractice.addEventListener(
+      "click",
+      function(){
+
+        S.practice=null;
+
+        practice();
+
+      }
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   PRACTICE ANSWER
+========================================================= */
+
+async function answerPractice(a){
+
+  const q=S.practice;
+
+  const ok =
+    a===q[3];
+
+  const pfEl =
+    $("pf");
+
+
+  if(!pfEl){
+
+    return;
+
+  }
+
+
+  pfEl.className =
+    "feedback "+
+    (
+      ok
+        ? "correct"
+        : "wrong"
+    );
+
+
+  pfEl.textContent =
+    ok
+      ? "✓ Correct!"
+      : "✗ Incorrect. Correct answer: "+
+        q[3];
+
+
+  if(!ok){
+
+    try{
+
+      await saveMistake(
+        q,
+        a,
+        "PRACTICE"
+      );
+
+    }catch(e){
+
+      console.warn(
+        "Mistake save failed:",
+        e
+      );
+
+    }
+
+  }else{
+
+    try{
+
+      await API.attempt(
+        "PRACTICE",
+        q[0],
+        1,
+        1,
+        0
+      );
+
+      S.data=
+        await API.dashboard();
+
+      S.user=
+        S.data.user;
+
+      stats();
+
+    }catch(e){
+
+      console.warn(
+        "Practice attempt save failed:",
+        e
+      );
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   QUIZ
+========================================================= */
+
+function quiz(exam){
+
+  if(!S.quiz){
+
+    const pool =
+      exam
+        ? [...qs,...qs].slice(0,10)
+        : qs.slice(0,5);
+
+
+    S.quiz={
+
+      items:pool,
+
+      index:0,
+
+      score:0,
+
+      exam:exam
+
+    };
+
+
+    if(exam){
+
+      startExamTimer();
+
+    }
+
+  }
+
+
+  const z=S.quiz;
+
+
+  if(
+    z.index>=
+    z.items.length
+  ){
+
+    result();
+
+    return;
+
+  }
+
+
+  const q =
+    z.items[z.index];
+
+
+  main.innerHTML=`
+
+    <div
+      class="card"
+      style="padding:22px">
+
+      <div class="eyebrow">
+
+        ${
+          z.exam
+            ? "EXAM MODE"
+            : "QUIZ MODE"
+        }
+
+        •
+
+        ${z.index+1}/${z.items.length}
+
+      </div>
+
+      ${
+        z.exam
+          ? `
+            <p
+              id="timer"
+              style="color:var(--y);font-weight:900">
+              10:00
+            </p>
+          `
+          : ""
+      }
+
+      <div class="bar">
+
+        <i
+          style="width:${
+            (
+              z.index/
+              z.items.length
+            )*100
+          }%">
+        </i>
+
+      </div>
+
+      <h2>
+        ${esc(q[1])}
+      </h2>
+
+      <div
+        class="options"
+        id="quizOptions">
+
+        ${q[2].map((o,i)=>`
+
+          <button
+            class="option"
+            type="button"
+            data-quiz-index="${i}">
+
+            ${esc(o)}
+
+          </button>
+
+        `).join("")}
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  document
+    .querySelectorAll(
+      "[data-quiz-index]"
+    )
+    .forEach(btn=>{
+
+      btn.addEventListener(
+        "click",
+        function(){
+
+          const index =
+            Number(
+              this.dataset.quizIndex
+            );
+
+          answerQuiz(
+            q[2][index]
+          );
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =========================================================
+   EXAM TIMER
+========================================================= */
+
+let examEnd=0;
+
+
+function startExamTimer(){
+
+  examEnd =
+    Date.now()+
+    10*60*1000;
+
+
+  clearInterval(
+    S.examTimer
+  );
+
+
+  S.examTimer =
+    setInterval(
+      ()=>{
+
+        if(
+          !S.quiz ||
+          !S.quiz.exam
+        ){
+
+          return;
+
+        }
+
+
+        const left =
+          Math.max(
+            0,
+            examEnd-Date.now()
+          );
+
+
+        const seconds =
+          Math.ceil(
+            left/1000
+          );
+
+
+        const el =
+          $("timer");
+
+
+        if(el){
+
+          el.textContent =
+            Math.floor(seconds/60)+
+            ":"+
+            String(
+              seconds%60
+            ).padStart(2,"0");
+
+        }
+
+
+        if(seconds<=0){
+
+          clearInterval(
+            S.examTimer
+          );
+
+          S.quiz.index =
+            S.quiz.items.length;
+
+          renderMode();
+
+        }
+
+      },
+      500
+    );
+
+}
+
+
+/* =========================================================
+   QUIZ ANSWER
+========================================================= */
+
+async function answerQuiz(a){
+
+  const z=S.quiz;
+
+  const q =
+    z.items[z.index];
+
+
+  if(a===q[3]){
+
+    z.score++;
+
+  }else{
+
+    try{
+
+      await saveMistake(
+        q,
+        a,
+        z.exam
+          ? "EXAM"
+          : "QUIZ"
+      );
+
+    }catch(e){
+
+      console.warn(
+        "Mistake save failed:",
+        e
+      );
+
+    }
+
+  }
+
+
+  z.index++;
+
+  renderMode();
+
+}
+
+
+/* =========================================================
+   RESULT
+========================================================= */
+
+async function result(){
+
+  clearInterval(
+    S.examTimer
+  );
+
+
+  const z=S.quiz;
+
+
+  if(
+    !z.saved
+  ){
+
+    z.saved=true;
+
+
+    let duration=0;
+
+
+    if(z.exam){
+
+      const elapsed =
+        10*60-
+        Math.max(
+          0,
+          (examEnd-Date.now())/1000
+        );
+
+      duration =
+        Math.max(
+          0,
+          Math.round(elapsed)
+        );
+
+    }
+
+
+    try{
+
+      const r =
+        await API.attempt(
+          z.exam
+            ? "EXAM"
+            : "QUIZ",
+          null,
+          z.score,
+          z.items.length,
+          duration
+        );
+
+
+      S.user=r.user;
+
+      S.data=
+        await API.dashboard();
+
+    }catch(e){
+
+      console.warn(
+        "Result save failed:",
+        e
+      );
+
+    }
+
+  }
+
+
+  const percentage =
+    Math.round(
+      (
+        z.score/
+        z.items.length
+      )*100
+    );
+
+
+  main.innerHTML=`
+
+    <div
+      class="card"
+      style="
+        padding:30px;
+        text-align:center;
+      ">
+
+      <div class="eyebrow">
+
+        ${
+          z.exam
+            ? "EXAM"
+            : "QUIZ"
+        }
+
+        COMPLETE
+
+      </div>
+
+      <div class="score">
+
+        ${z.score}/${z.items.length}
+
+      </div>
+
+      <p class="muted">
+
+        ${percentage}%
+
+      </p>
+
+      <button
+        id="tryAgainBtn"
+        class="btn"
+        type="button">
+
+        TRY AGAIN
+
+      </button>
+
+      <button
+        id="mistakeResultBtn"
+        class="btn dark"
+        type="button"
+        style="margin-left:8px">
+
+        MISTAKE BOOK
+
+      </button>
+
+    </div>
+
+  `;
+
+
+  const tryAgainBtn =
+    $("tryAgainBtn");
+
+  if(tryAgainBtn){
+
+    tryAgainBtn.addEventListener(
+      "click",
+      function(){
+
+        S.quiz=null;
+
+        renderMode();
+
+      }
+    );
+
+  }
+
+
+  const mistakeResultBtn =
+    $("mistakeResultBtn");
+
+  if(mistakeResultBtn){
+
+    mistakeResultBtn.addEventListener(
+      "click",
+      function(){
+
+        mode("mistakes");
+
+      }
+    );
+
+  }
+
+
+  stats();
+
+}
+
+
+/* =========================================================
+   AI TEACHER
+========================================================= */
+
+function aiTeacher(){
+
+  const M=m();
+
+  const topic =
+    M.topics[S.topic] ||
+    M.topics[0];
+
+
+  main.innerHTML=`
+
+    <div class="head">
+
+      <h2>
+        ASK AYAN AI
+      </h2>
+
+      <span class="muted">
+        Hinglish • step-by-step • exam focused
+      </span>
+
+    </div>
+
+
+    <div class="two">
+
+      <div
+        class="card"
+        style="padding:22px">
+
+        <div class="eyebrow">
+          AI TEACHER LOOP
+        </div>
+
+        <h3>
+
+          ${esc(M.name)}
+          •
+          ${esc(topic[0])}
+
+        </h3>
+
+        <p class="muted">
+
+          Question bhejo.
+          AYAN concept → formula →
+          steps → mistake → mini practice
+          format me samjhayega.
+
+        </p>
+
+        <textarea
+          id="aiQ"
+          class="textarea"
+          style="min-height:180px"
+          placeholder="Example: Differentiate y = x² sin x step by step...">
+        </textarea>
+
+        <button
+          id="askAyanBtn"
+          class="btn"
+          type="button">
+
+          ASK AYAN →
+
+        </button>
+
+        <div
+          id="aiOut"
+          class="card"
+          style="
+            padding:18px;
+            margin-top:15px;
+            white-space:pre-wrap;
+            line-height:1.7;
+            display:none;
+          ">
+        </div>
+
+      </div>
+
+
+      <div
+        class="card"
+        style="padding:22px">
+
+        <h3>
+          How AYAN teaches
+        </h3>
+
+        <p>
+          1. Concept identify
+        </p>
+
+        <p>
+          2. Formula/rule
+        </p>
+
+        <p>
+          3. Worked solution
+        </p>
+
+        <p>
+          4. Common mistake
+        </p>
+
+        <p>
+          5. Mini practice
+        </p>
+
+        <hr>
+
+        <p class="muted">
+
+          AI answers are study assistance.
+          Always verify with your class notes/teacher
+          for exact wording and marking scheme.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  const askBtn =
+    $("askAyanBtn");
+
+
+  if(askBtn){
+
+    askBtn.addEventListener(
+      "click",
+      askAyan
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   ASK AYAN
+========================================================= */
+
+async function askAyan(){
+
+  const questionInput =
+    $("aiQ");
+
+  const out =
+    $("aiOut");
+
+  if(!questionInput || !out){
+
+    return;
+
+  }
+
+
+  const q =
+    questionInput.value.trim();
+
+
+  if(!q){
+
+    alert(
+      "Pehle apna question likho."
+    );
+
+    return;
+
+  }
+
+
+  out.style.display="block";
+
+  out.textContent =
+    "AYAN is thinking...";
+
+
+  try{
+
+    const M=m();
+
+    const topic =
+      M.topics[S.topic] ||
+      M.topics[0];
+
+
+    const r =
+      await API.aiTeach({
+
+        question:q,
+
+        moduleId:S.module,
+
+        topic:topic[0],
+
+        mode:"explain"
+
+      });
+
+
+    out.textContent =
+      r.answer ||
+      "AYAN could not generate an answer.";
+
+  }catch(e){
+
+    out.textContent =
+      "AYAN: "+
+      (
+        e?.message ||
+        "AI service unavailable."
+      );
+
+  }
+
+}
+
+
+/* =========================================================
+   MISTAKE BOOK
+========================================================= */
+
+function mistakes(){
+
+  const a =
+    S.data.mistakes || [];
+
+
+  main.innerHTML=`
+
+    <div class="head">
+
+      <h2>
+        Mistake Book
+      </h2>
+
+      <span class="muted">
+        ${a.length} mistakes
+      </span>
+
+    </div>
+
+    ${
+      a.length
+
+      ?
+
+      a.map(x=>`
+
+        <div class="mistake">
+
+          <b style="color:var(--r)">
+
+            ${esc(
+              x.source || ""
+            )}
+
+            •
+
+            ${esc(
+              x.module_id || ""
+            )}
+
+          </b>
+
+          <h3>
+            ${esc(
+              x.question || ""
+            )}
+          </h3>
+
+          <p>
+            Your answer:
+            ${esc(
+              x.selected_answer ||
+              "—"
+            )}
+          </p>
+
+          <p>
+
+            Correct:
+            <b style="color:var(--g)">
+
+              ${esc(
+                x.correct_answer ||
+                ""
+              )}
+
+            </b>
+
+          </p>
+
+          <p class="muted">
+
+            ${esc(
+              x.explanation ||
+              "Review this concept again."
+            )}
+
+          </p>
+
+          <button
+            class="btn dark"
+            type="button"
+            data-remove-mistake="${x.id}">
+
+            REMOVE
+
+          </button>
+
+        </div>
+
+      `).join("")
+
+      :
+
+      `
+
+        <div
+          class="card"
+          style="padding:22px">
+
+          <h3>
+            No mistakes yet.
+          </h3>
+
+          <p class="muted">
+
+            Wrong answers from Practice,
+            Quiz and Exam will appear here.
+
+          </p>
+
+        </div>
+
+      `
+    }
+
+  `;
+
+
+  document
+    .querySelectorAll(
+      "[data-remove-mistake]"
+    )
+    .forEach(btn=>{
+
+      btn.addEventListener(
+        "click",
+        function(){
+
+          removeMistake(
+            this.dataset.removeMistake
+          );
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =========================================================
+   REMOVE MISTAKE
+========================================================= */
+
+async function removeMistake(id){
+
+  try{
+
+    await API.deleteMistake(id);
+
+    S.data=
+      await API.dashboard();
+
+    render();
+
+  }catch(e){
+
+    alert(
+      e?.message ||
+      "Unable to remove mistake."
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   ADMIN
+========================================================= */
+
+async function adminView(){
+
+  main.innerHTML=`
+
+    <div class="head">
+
+      <h2>
+        AYAN ADMIN DASHBOARD
+      </h2>
+
+      <button
+        id="adminRefreshBtn"
+        class="btn dark"
+        type="button">
+
+        REFRESH
+
+      </button>
+
+    </div>
+
+    <div
+      id="adminBox"
+      class="card"
+      style="padding:22px">
+
+      Loading...
+
+    </div>
+
+  `;
+
+
+  const refresh =
+    $("adminRefreshBtn");
+
+
+  if(refresh){
+
+    refresh.addEventListener(
+      "click",
+      adminView
+    );
+
+  }
+
+
+  const box =
+    $("adminBox");
+
+
+  try{
+
+    const d =
+      await API.adminOverview();
+
+
+    box.innerHTML=`
+
+      <div class="adminGrid">
+
+        <div class="card adminStat">
+
+          STUDENTS
+
+          <b>
+            ${d.counts.students}
+          </b>
+
+        </div>
+
+        <div class="card adminStat">
+
+          ATTEMPTS
+
+          <b>
+            ${d.counts.attempts}
+          </b>
+
+        </div>
+
+        <div class="card adminStat">
+
+          MISTAKES
+
+          <b>
+            ${d.counts.mistakes}
+          </b>
+
+        </div>
+
+        <div class="card adminStat">
+
+          TOPICS DONE
+
+          <b>
+            ${d.counts.completedTopics}
+          </b>
+
+        </div>
+
+      </div>
+
+
+      <h3>
+        Recent Students
+      </h3>
+
+      ${
+        d.students.length
+
+          ?
+
+          d.students.map(s=>`
+
+            <div class="topic">
+
+              <span>
+
+                <b>
+                  ${esc(s.name)}
+                </b>
+
+                <small>
+                  ${esc(s.email)}
+                </small>
+
+              </span>
+
+              <span>
+
+                ${s.xp} XP
+                •
+                ${s.streak} 🔥
+
+              </span>
+
+            </div>
+
+          `).join("")
+
+          :
+
+          `<p class="muted">
+            No students yet.
+          </p>`
+      }
+
+
+      <hr
+        style="
+          border-color:var(--line);
+          margin:25px 0;
+        ">
+
+
+      <h3>
+        Add Question
+      </h3>
+
+      <input
+        id="aq"
+        class="field"
+        placeholder="Question">
+
+      <input
+        id="aa"
+        class="field"
+        placeholder="Correct answer">
+
+      <input
+        id="ao"
+        class="field"
+        placeholder="Options separated by |">
+
+      <textarea
+        id="ae"
+        class="textarea"
+        placeholder="Explanation">
+      </textarea>
+
+      <button
+        id="addQuestionBtn"
+        class="btn"
+        type="button">
+
+        ADD QUESTION
+
+      </button>
+
+
+      <h3 style="margin-top:30px">
+
+        Add Formula
+
+      </h3>
+
+      <input
+        id="ft"
+        class="field"
+        placeholder="Formula title">
+
+      <input
+        id="ff"
+        class="field"
+        placeholder="Formula">
+
+      <textarea
+        id="fe"
+        class="textarea"
+        placeholder="Explanation">
+      </textarea>
+
+      <button
+        id="addFormulaBtn"
+        class="btn"
+        type="button">
+
+        ADD FORMULA
+
+      </button>
+
+    `;
+
+
+    const addQuestionBtn =
+      $("addQuestionBtn");
+
+
+    if(addQuestionBtn){
+
+      addQuestionBtn.addEventListener(
+        "click",
+        addQ
+      );
+
+    }
+
+
+    const addFormulaBtn =
+      $("addFormulaBtn");
+
+
+    if(addFormulaBtn){
+
+      addFormulaBtn.addEventListener(
+        "click",
+        addF
+      );
+
+    }
+
+
+  }catch(e){
+
+    box.textContent =
+      e?.message ||
+      "Unable to load admin dashboard.";
+
+  }
+
+}
+
+
+/* =========================================================
+   ADD QUESTION
+========================================================= */
+
+async function addQ(){
+
+  try{
+
+    const question =
+      $("aq")?.value.trim();
+
+    const correctAnswer =
+      $("aa")?.value.trim();
+
+    const optionsText =
+      $("ao")?.value || "";
+
+    const explanation =
+      $("ae")?.value.trim();
+
+
+    if(!question){
+
+      throw new Error(
+        "Question enter karo."
+      );
+
+    }
+
+    if(!correctAnswer){
+
+      throw new Error(
+        "Correct answer enter karo."
+      );
+
+    }
+
+
+    const options =
+      optionsText
+        .split("|")
+        .map(x=>x.trim())
+        .filter(Boolean);
+
+
+    if(options.length<2){
+
+      throw new Error(
+        "At least 2 options enter karo."
+      );
+
+    }
+
+
+    await API.addQuestion({
+
+      moduleId:S.module,
+
+      question,
+
+      correctAnswer,
+
+      options,
+
+      explanation
+
+    });
+
+
+    alert(
+      "Question added successfully."
+    );
+
+
+    adminView();
+
+  }catch(e){
+
+    alert(
+      e?.message ||
+      "Unable to add question."
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   ADD FORMULA
+========================================================= */
+
+async function addF(){
+
+  try{
+
+    const title =
+      $("ft")?.value.trim();
+
+    const formula =
+      $("ff")?.value.trim();
+
+    const explanation =
+      $("fe")?.value.trim();
+
+
+    if(!title){
+
+      throw new Error(
+        "Formula title enter karo."
+      );
+
+    }
+
+    if(!formula){
+
+      throw new Error(
+        "Formula enter kro bhyii."
+      );
+
+    }
+
+
+    await API.addFormula({
+
+      moduleId:S.module,
+
+      title,
+
+      formula,
+
+      explanation
+
+    });
+
+
+    alert(
+      "Formula added successfully."
+    );
+
+
+    adminView();
+
+  }catch(e){
+
+    alert(
+      e?.message ||
+      "Unable to add formula."
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   INITIAL AUTH MODE
+========================================================= */
+
+authMode("login");
+
+
+/* =========================================================
+   SAFETY CHECK
+========================================================= */
+
+window.addEventListener(
+  "error",
+  function(event){
+
+    console.error(
+      "AWB MATHS HUB error:",
+      event.error || event.message
+    );
+
+  }
+);
+
+</script>
+
+</body>
+</html>
